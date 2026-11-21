@@ -166,8 +166,8 @@ def declare_type(
 
     for decl in decls:
         try:
-            flags = ida_typeinf.PT_SIL | ida_typeinf.PT_EMPTY | ida_typeinf.PT_TYP
-            errors, messages = parse_decls_ctypes(decl, flags)
+            hti_flags = ida_typeinf.HTI_PAKDEF
+            errors, messages = parse_decls_ctypes(decl, hti_flags)
 
             pretty_messages = "\n".join(messages)
             if errors > 0:
@@ -597,7 +597,7 @@ def type_query(
             kind = "any"
 
         offset = int(query.get("offset", 0) or 0)
-        count = int(query.get("count", 100) or 100)
+        count = int(query["count"]) if query.get("count") is not None else 100
         sort_by = str(query.get("sort_by", "name") or "name")
         descending = bool(query.get("descending", False))
         include_decl = bool(query.get("include_decl", True))

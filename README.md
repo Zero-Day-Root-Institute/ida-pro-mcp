@@ -1,5 +1,10 @@
 # IDA Pro MCP
 
+> [!IMPORTANT]
+> **I recommend using the [Official Hex-Rays IDA MCP Server](https://github.com/HexRaysSA/ida-mcp) instead!**
+> 
+> See the [announcement blog post](https://hex-rays.com/blog/hex-rays-ida-mcp-server) for more information.
+
 Simple [MCP Server](https://modelcontextprotocol.io/introduction) to allow vibe reversing in IDA Pro.
 
 https://github.com/user-attachments/assets/6ebeaa92-a9db-43fa-b756-eececce2aca0
@@ -15,7 +20,7 @@ The binaries and prompt for the video are available in the [mcp-reversing-datase
   - [Amazon Q Developer CLI](https://aws.amazon.com/q/developer/)
   - [Augment Code](https://www.augmentcode.com/)
   - [Claude](https://claude.ai/download)
-  - [Claude Code](https://www.anthropic.com/code)
+  - [Claude Code](https://claude.com/product/claude-code)
   - [Cline](https://cline.bot)
   - [Codex](https://github.com/openai/codex)
   - [Copilot CLI](https://docs.github.com/en/copilot)
@@ -249,6 +254,13 @@ Worker controls:
 
 - `--max-workers N`: maximum simultaneous database workers (`0` = unlimited, default `4`).
 - `IDA_MCP_MAX_WORKERS`: environment default for `--max-workers`.
+
+The bundled Codex plugin forwards the runtime's `IDA_MCP_*` configuration variables from the Codex host environment:
+
+- Capacity and lifecycle: `IDA_MCP_MAX_WORKERS`, `IDA_MCP_OPEN_TIMEOUT`, `IDA_MCP_WEDGED_GRACE_SEC`, `IDA_MCP_WORKER_CALL_TIMEOUT`.
+- Health probes: `IDA_MCP_HEALTH_TCP_TIMEOUT`, `IDA_MCP_HEALTH_RPC_TIMEOUT`, `IDA_MCP_HEALTH_RETRIES`, `IDA_MCP_HEALTH_RETRY_BACKOFF`.
+- Worker behavior: `IDA_MCP_TOOL_TIMEOUT_SEC`, `IDA_MCP_ANALYSIS_PROMPT`, `IDA_MCP_URL`.
+- Request logging: `IDA_MCP_LOG_REQUESTS`, `IDA_MCP_LOG_SKIP_METHODS`.
 
 
 ## MCP Resources
